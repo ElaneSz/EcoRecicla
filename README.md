@@ -84,7 +84,7 @@ As classes estão organizadas conceitualmente em 4 grupos:
 
 | Ferramenta | Uso |
 |---|---|
-| **Java 17** | Linguagem principal |
+| **Java 21** | Linguagem principal |
 | **Maven** | Build e gerenciamento de dependências |
 | **JUnit 4** | Testes unitários |
 | **JaCoCo** | Análise de cobertura de testes |
@@ -139,7 +139,7 @@ Os testes unitários foram elaborados com **JUnit 4**, cobrindo as classes que c
 
 ### Pré-requisitos
 
-- JDK 17 ou superior
+- JDK 21 ou superior
 - Maven 3.8+ (ou utilizar o Maven embutido do NetBeans)
 
 ### Compilar o projeto

@@ -1,6 +1,6 @@
 # EcoRecicla ♻️
 
-Plataforma digital voltada à gestão e rastreamento de resíduos recicláveis, conectando **cidadãos**, **cooperativas de reciclagem**, **empresas** e **órgãos públicos** em um ecossistema colaborativo orientado à sustentabilidade.
+Plataforma digital voltada à gestão e rastreamento de resíduos recicláveis, conectando **cidadãos**, **cooperativas de reciclagem**, **empresas** e **órgãos públicos** em um ecossistema colaborativo orientado à sustentabilidade. 
 
 Projeto desenvolvido para a disciplina de **Engenharia de Software**, do curso de Bacharelado em Ciência da Computação - Universidade do Estado de Santa Catarina (UDESC), Centro de Ciências Tecnológicas (CCT).
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PontoDeColeta.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">PontoDeColeta.java</span></div><h1>PontoDeColeta.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PontoDeColeta {
+    private String nome;
+    private String endereco;
+    private double latitude;
+    private double longitude;
+    private String horario;
+    private List&lt;Material&gt; materiaisAceitos;
+    private boolean disponivel;
+
+    public PontoDeColeta(String nome, String endereco, double latitude,
+<span class="fc" id="L25">                         double longitude, String horario) {</span>
+<span class="fc" id="L26">        this.nome = nome;</span>
+<span class="fc" id="L27">        this.endereco = endereco;</span>
+<span class="fc" id="L28">        this.latitude = latitude;</span>
+<span class="fc" id="L29">        this.longitude = longitude;</span>
+<span class="fc" id="L30">        this.horario = horario;</span>
+<span class="fc" id="L31">        this.materiaisAceitos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L32">        this.disponivel = true;</span>
+<span class="fc" id="L33">    }</span>
+
+    public double calcularDistancia(double latRef, double lonRef) {
+<span class="fc" id="L36">        final int R = 6371;</span>
+<span class="fc" id="L37">        double dLat = Math.toRadians(latRef - this.latitude);</span>
+<span class="fc" id="L38">        double dLon = Math.toRadians(lonRef - this.longitude);</span>
+<span class="fc" id="L39">        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)</span>
+<span class="fc" id="L40">                + Math.cos(Math.toRadians(this.latitude))</span>
+<span class="fc" id="L41">                * Math.cos(Math.toRadians(latRef))</span>
+<span class="fc" id="L42">                * Math.sin(dLon / 2) * Math.sin(dLon / 2);</span>
+<span class="fc" id="L43">        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</span>
+<span class="fc" id="L44">        return R * c;</span>
+    }
+
+<span class="fc" id="L47">    public boolean verificarDisponibilidade() { return this.disponivel; }</span>
+
+<span class="fc" id="L49">    public List&lt;Material&gt; listarMateriais() { return new ArrayList&lt;&gt;(materiaisAceitos); }</span>
+
+    public boolean adicionarMaterial(Material material) {
+<span class="fc bfc" id="L52" title="All 4 branches covered.">        if (material != null &amp;&amp; !materiaisAceitos.contains(material)) {</span>
+<span class="fc" id="L53">            return materiaisAceitos.add(material);</span>
+        }
+<span class="fc" id="L55">        return false;</span>
+    }
+
+<span class="fc" id="L58">    public String getNome() { return nome; }</span>
+<span class="fc" id="L59">    public void setNome(String nome) { this.nome = nome; }</span>
+<span class="fc" id="L60">    public String getEndereco() { return endereco; }</span>
+<span class="fc" id="L61">    public void setEndereco(String endereco) { this.endereco = endereco; }</span>
+<span class="fc" id="L62">    public double getLatitude() { return latitude; }</span>
+<span class="fc" id="L63">    public void setLatitude(double latitude) { this.latitude = latitude; }</span>
+<span class="fc" id="L64">    public double getLongitude() { return longitude; }</span>
+<span class="fc" id="L65">    public void setLongitude(double longitude) { this.longitude = longitude; }</span>
+<span class="fc" id="L66">    public String getHorario() { return horario; }</span>
+<span class="fc" id="L67">    public void setHorario(String horario) { this.horario = horario; }</span>
+<span class="fc" id="L68">    public boolean isDisponivel() { return disponivel; }</span>
+<span class="fc" id="L69">    public void setDisponivel(boolean disponivel) { this.disponivel = disponivel; }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

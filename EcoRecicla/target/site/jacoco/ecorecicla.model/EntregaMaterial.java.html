@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EntregaMaterial.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">EntregaMaterial.java</span></div><h1>EntregaMaterial.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+public class EntregaMaterial {
+    private String id;
+    private LocalDateTime dataHora;
+    private double pesoKg;
+    private String status;
+    private int pontosGerados;
+    private Material material;
+    private PontoDeColeta pontoDeColeta;
+
+<span class="fc" id="L24">    public EntregaMaterial(double pesoKg, Material material, PontoDeColeta pontoDeColeta) {</span>
+<span class="fc" id="L25">        this.id = UUID.randomUUID().toString();</span>
+<span class="fc" id="L26">        this.dataHora = LocalDateTime.now();</span>
+<span class="fc" id="L27">        this.pesoKg = pesoKg;</span>
+<span class="fc" id="L28">        this.material = material;</span>
+<span class="fc" id="L29">        this.pontoDeColeta = pontoDeColeta;</span>
+<span class="fc" id="L30">        this.status = &quot;PENDENTE&quot;;</span>
+<span class="fc" id="L31">        this.pontosGerados = 0;</span>
+<span class="fc" id="L32">    }</span>
+
+    public void confirmarEntrega() {
+<span class="fc" id="L35">        this.status = &quot;CONFIRMADA&quot;;</span>
+<span class="fc" id="L36">        this.pontosGerados = calcularPontos(null);</span>
+<span class="fc" id="L37">    }</span>
+
+    public int calcularPontos(CalculadoraPontos calc) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (calc != null) return calc.calcular(material, pesoKg);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        return material != null ? material.calcularPontosPorKg(pesoKg) : 0;</span>
+    }
+
+    public String gerarProtocolo() {
+<span class="fc" id="L45">        return &quot;ECO-&quot; + id.substring(0, 8).toUpperCase()</span>
+<span class="fc" id="L46">                + &quot;-&quot; + dataHora.toLocalDate().toString();</span>
+    }
+
+<span class="fc" id="L49">    public String getId() { return id; }</span>
+<span class="fc" id="L50">    public LocalDateTime getDataHora() { return dataHora; }</span>
+<span class="fc" id="L51">    public double getPesoKg() { return pesoKg; }</span>
+<span class="fc" id="L52">    public void setPesoKg(double pesoKg) { this.pesoKg = pesoKg; }</span>
+<span class="fc" id="L53">    public String getStatus() { return status; }</span>
+<span class="fc" id="L54">    public void setStatus(String status) { this.status = status; }</span>
+<span class="fc" id="L55">    public int getPontosGerados() { return pontosGerados; }</span>
+<span class="fc" id="L56">    public Material getMaterial() { return material; }</span>
+<span class="fc" id="L57">    public void setMaterial(Material material) { this.material = material; }</span>
+<span class="fc" id="L58">    public PontoDeColeta getPontoDeColeta() { return pontoDeColeta; }</span>
+<span class="fc" id="L59">    public void setPontoDeColeta(PontoDeColeta p) { this.pontoDeColeta = p; }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

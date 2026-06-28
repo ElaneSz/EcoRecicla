@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cidadao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">Cidadao.java</span></div><h1>Cidadao.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cidadao extends Usuario {
+    private String endereco;
+    private String dataNasc;
+    private Pontuacao pontuacao;
+    private List&lt;EntregaMaterial&gt; historicoEntregas;
+
+    public Cidadao(String nomeCompleto, String cpf, String email, String telefone, String usuario, String senha, String endereco, String dataNasc) {
+<span class="fc" id="L22">        super(nomeCompleto, cpf, email, telefone, usuario, senha);</span>
+<span class="fc" id="L23">        this.endereco = endereco;</span>
+<span class="fc" id="L24">        this.dataNasc = dataNasc;</span>
+<span class="fc" id="L25">        this.pontuacao = new Pontuacao();</span>
+<span class="fc" id="L26">        this.historicoEntregas = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L27">    }</span>
+
+    public EntregaMaterial registrarEntrega(PontoDeColeta pontoColeta,
+                                            Material material, double pesoKg) {
+<span class="fc bfc" id="L31" title="All 6 branches covered.">        if (pontoColeta == null || material == null || pesoKg &lt;= 0) return null;</span>
+<span class="fc" id="L32">        EntregaMaterial entrega = new EntregaMaterial(pesoKg, material, pontoColeta);</span>
+<span class="fc" id="L33">        entrega.confirmarEntrega();</span>
+<span class="fc" id="L34">        pontuacao.adicionarPontos(entrega.getPontosGerados());</span>
+<span class="fc" id="L35">        historicoEntregas.add(entrega);</span>
+<span class="fc" id="L36">        return entrega;</span>
+    }
+
+    public boolean resgatarRecompensa(Recompensa recompensa) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (recompensa == null) return false;</span>
+<span class="fc" id="L41">        return recompensa.resgatar(pontuacao);</span>
+    }
+
+<span class="fc" id="L44">    public int consultarPontos() { return pontuacao.getSaldoAtual(); }</span>
+
+    public List&lt;PontoDeColeta&gt; buscarPontoColeta(List&lt;PontoDeColeta&gt; todos, Material material) {
+<span class="fc" id="L47">        List&lt;PontoDeColeta&gt; resultado = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for (PontoDeColeta p : todos) {</span>
+<span class="fc bfc" id="L49" title="All 4 branches covered.">            if (p.verificarDisponibilidade() &amp;&amp; p.listarMateriais().contains(material)) {</span>
+<span class="fc" id="L50">                resultado.add(p);</span>
+            }
+<span class="fc" id="L52">        }</span>
+<span class="fc" id="L53">        return resultado;</span>
+    }
+
+<span class="fc" id="L56">    public String getEndereco() { return endereco; }</span>
+<span class="fc" id="L57">    public void setEndereco(String endereco) { this.endereco = endereco; }</span>
+<span class="fc" id="L58">    public String getDataNasc() { return dataNasc; }</span>
+<span class="fc" id="L59">    public void setDataNasc(String dataNasc) { this.dataNasc = dataNasc; }</span>
+<span class="fc" id="L60">    public Pontuacao getPontuacao() { return pontuacao; }</span>
+<span class="fc" id="L61">    public List&lt;EntregaMaterial&gt; getHistoricoEntregas() { return new ArrayList&lt;&gt;(historicoEntregas); }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Recompensa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">Recompensa.java</span></div><h1>Recompensa.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+import java.time.LocalDate;
+
+public class Recompensa {
+    private String nome;
+    private String descricao;
+    private int custoEmPontos;
+    private int estoque;
+    private LocalDate validade;
+
+    public Recompensa(String nome, String descricao, int custoEmPontos,
+<span class="fc" id="L22">                      int estoque, LocalDate validade) {</span>
+<span class="fc" id="L23">        this.nome = nome;</span>
+<span class="fc" id="L24">        this.descricao = descricao;</span>
+<span class="fc" id="L25">        this.custoEmPontos = custoEmPontos;</span>
+<span class="fc" id="L26">        this.estoque = estoque;</span>
+<span class="fc" id="L27">        this.validade = validade;</span>
+<span class="fc" id="L28">    }</span>
+
+    public boolean verificarDisponibilidade() {
+<span class="fc bfc" id="L31" title="All 4 branches covered.">        return estoque &gt; 0 &amp;&amp; LocalDate.now().isBefore(validade);</span>
+    }
+
+    public boolean resgatar(Pontuacao pontuacao) {
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if (verificarDisponibilidade() &amp;&amp; pontuacao.debitarPontos(custoEmPontos)) {</span>
+<span class="fc" id="L36">            this.estoque--;</span>
+<span class="fc" id="L37">            return true;</span>
+        }
+<span class="fc" id="L39">        return false;</span>
+    }
+
+<span class="fc" id="L42">    public String getNome() { return nome; }</span>
+<span class="fc" id="L43">    public void setNome(String nome) { this.nome = nome; }</span>
+<span class="fc" id="L44">    public String getDescricao() { return descricao; }</span>
+<span class="fc" id="L45">    public void setDescricao(String descricao) { this.descricao = descricao; }</span>
+<span class="fc" id="L46">    public int getCustoEmPontos() { return custoEmPontos; }</span>
+<span class="fc" id="L47">    public void setCustoEmPontos(int custoEmPontos) { this.custoEmPontos = custoEmPontos; }</span>
+<span class="fc" id="L48">    public int getEstoque() { return estoque; }</span>
+<span class="fc" id="L49">    public void setEstoque(int estoque) { this.estoque = estoque; }</span>
+<span class="fc" id="L50">    public LocalDate getValidade() { return validade; }</span>
+<span class="fc" id="L51">    public void setValidade(LocalDate validade) { this.validade = validade; }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

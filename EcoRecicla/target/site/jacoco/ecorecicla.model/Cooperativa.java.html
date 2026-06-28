@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cooperativa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">Cooperativa.java</span></div><h1>Cooperativa.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cooperativa extends Usuario {
+    private String razaoSocial;
+    private String cnpj;
+    private String endereco;
+    private String contaBancaria;
+    private List&lt;Material&gt; materiaisAceitos;
+    private List&lt;PontoDeColeta&gt; pontosDeColeta;
+    private List&lt;Negociacao&gt; negociacoes;
+
+    public Cooperativa(String nomeCompleto, String cpf, String email, String telefone,
+                       String usuario, String senha, String razaoSocial,
+                       String cnpj, String endereco, String contaBancaria) {
+<span class="nc" id="L28">        super(nomeCompleto, cpf, email, telefone, usuario, senha);</span>
+<span class="nc" id="L29">        this.razaoSocial = razaoSocial;</span>
+<span class="nc" id="L30">        this.cnpj = cnpj;</span>
+<span class="nc" id="L31">        this.endereco = endereco;</span>
+<span class="nc" id="L32">        this.contaBancaria = contaBancaria;</span>
+<span class="nc" id="L33">        this.materiaisAceitos = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L34">        this.pontosDeColeta = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L35">        this.negociacoes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L36">    }</span>
+
+    public boolean adicionarPontoColeta(PontoDeColeta ponto) {
+<span class="nc bnc" id="L39" title="All 4 branches missed.">        if (ponto != null &amp;&amp; !pontosDeColeta.contains(ponto)) {</span>
+<span class="nc" id="L40">            return pontosDeColeta.add(ponto);</span>
+        }
+<span class="nc" id="L42">        return false;</span>
+    }
+
+    public void registrarRecebimento(EntregaMaterial entrega) {
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if (entrega != null) entrega.setStatus(&quot;RECEBIDA_COOPERATIVA&quot;);</span>
+<span class="nc" id="L47">    }</span>
+
+    public RelatorioImpacto gerarRelatorio(LocalDate inicio, LocalDate fim) {
+<span class="nc" id="L50">        RelatorioImpacto relatorio = new RelatorioImpacto(inicio, fim);</span>
+<span class="nc" id="L51">        relatorio.calcularImpacto();</span>
+<span class="nc" id="L52">        return relatorio;</span>
+    }
+
+<span class="nc" id="L55">    public List&lt;Negociacao&gt; acessarMarketplace() { return new ArrayList&lt;&gt;(negociacoes); }</span>
+
+    public void adicionarNegociacao(Negociacao negociacao) {
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (negociacao != null) negociacoes.add(negociacao);</span>
+<span class="nc" id="L59">    }</span>
+
+<span class="nc" id="L61">    public String getRazaoSocial() { return razaoSocial; }</span>
+<span class="nc" id="L62">    public void setRazaoSocial(String razaoSocial) { this.razaoSocial = razaoSocial; }</span>
+<span class="nc" id="L63">    public String getCnpj() { return cnpj; }</span>
+<span class="nc" id="L64">    public void setCnpj(String cnpj) { this.cnpj = cnpj; }</span>
+<span class="nc" id="L65">    public String getEndereco() { return endereco; }</span>
+<span class="nc" id="L66">    public void setEndereco(String endereco) { this.endereco = endereco; }</span>
+<span class="nc" id="L67">    public String getContaBancaria() { return contaBancaria; }</span>
+<span class="nc" id="L68">    public void setContaBancaria(String c) { this.contaBancaria = c; }</span>
+<span class="nc" id="L69">    public List&lt;Material&gt; getMateriaisAceitos() { return new ArrayList&lt;&gt;(materiaisAceitos); }</span>
+<span class="nc" id="L70">    public void adicionarMaterial(Material m) { materiaisAceitos.add(m); }</span>
+<span class="nc" id="L71">    public List&lt;PontoDeColeta&gt; getPontosDeColeta() { return new ArrayList&lt;&gt;(pontosDeColeta); }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

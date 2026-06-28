@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+public abstract class Usuario {
+    private String nomeCompleto;
+    private String cpf;
+    private String email;
+    private String telefone;
+    private String usuario;
+    private String senha;
+
+    public Usuario(String nomeCompleto, String cpf, String email,
+<span class="fc" id="L21">                   String telefone, String usuario, String senha) {</span>
+<span class="fc" id="L22">        this.nomeCompleto = nomeCompleto;</span>
+<span class="fc" id="L23">        this.cpf = cpf;</span>
+<span class="fc" id="L24">        this.email = email;</span>
+<span class="fc" id="L25">        this.telefone = telefone;</span>
+<span class="fc" id="L26">        this.usuario = usuario;</span>
+<span class="fc" id="L27">        this.senha = senha;</span>
+<span class="fc" id="L28">    }</span>
+
+    public boolean login(String usuario, String senha) {
+<span class="fc bfc" id="L31" title="All 4 branches covered.">        return this.usuario.equals(usuario) &amp;&amp; this.senha.equals(senha);</span>
+    }
+
+    public void logout() {
+<span class="fc" id="L35">        System.out.println(&quot;Usuário &quot; + this.usuario + &quot; deslogado.&quot;);</span>
+<span class="fc" id="L36">    }</span>
+
+    public void atualizarDados(String novoEmail, String novoTelefone) {
+<span class="fc" id="L39">        this.email = novoEmail;</span>
+<span class="fc" id="L40">        this.telefone = novoTelefone;</span>
+<span class="fc" id="L41">    }</span>
+
+    public boolean alterarSenha(String senhaAtual, String novaSenha) {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (this.senha.equals(senhaAtual)) {</span>
+<span class="fc" id="L45">            this.senha = novaSenha;</span>
+<span class="fc" id="L46">            return true;</span>
+        }
+<span class="fc" id="L48">        return false;</span>
+    }
+
+<span class="fc" id="L51">    public Usuario getDados() { return this; }</span>
+
+<span class="fc" id="L53">    public String getNomeCompleto() { return nomeCompleto; }</span>
+<span class="fc" id="L54">    public void setNomeCompleto(String n) { this.nomeCompleto = n; }</span>
+<span class="fc" id="L55">    public String getCpf() { return cpf; }</span>
+<span class="fc" id="L56">    public void setCpf(String cpf) { this.cpf = cpf; }</span>
+<span class="fc" id="L57">    public String getEmail() { return email; }</span>
+<span class="fc" id="L58">    public void setEmail(String email) { this.email = email; }</span>
+<span class="fc" id="L59">    public String getTelefone() { return telefone; }</span>
+<span class="fc" id="L60">    public void setTelefone(String t) { this.telefone = t; }</span>
+<span class="fc" id="L61">    public String getUsuario() { return usuario; }</span>
+<span class="fc" id="L62">    public void setUsuario(String u) { this.usuario = u; }</span>
+<span class="fc" id="L63">    public String getSenha() { return senha; }</span>
+<span class="fc" id="L64">    public void setSenha(String senha) { this.senha = senha; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

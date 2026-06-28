@@ -1,0 +1,14 @@
+ecorecicla\model\Administrador.class
+ecorecicla\model\Usuario.class
+ecorecicla\util\Validador.class
+ecorecicla\model\Material.class
+ecorecicla\model\RelatorioImpacto.class
+ecorecicla\model\Recompensa.class
+ecorecicla\model\Empresa.class
+ecorecicla\model\Pontuacao.class
+ecorecicla\model\Cidadao.class
+ecorecicla\model\CalculadoraPontos.class
+ecorecicla\model\PontoDeColeta.class
+ecorecicla\model\EntregaMaterial.class
+ecorecicla\model\Negociacao.class
+ecorecicla\model\Cooperativa.class

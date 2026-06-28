@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RelatorioImpacto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EcoRecicla</a> &gt; <a href="index.source.html" class="el_package">ecorecicla.model</a> &gt; <span class="el_source">RelatorioImpacto.java</span></div><h1>RelatorioImpacto.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ecorecicla.model;
+
+/**
+ *
+ * @author selan
+ */
+
+import java.time.LocalDate;
+
+public class RelatorioImpacto {
+    private LocalDate periodoInicio;
+    private LocalDate periodoFim;
+    private double totalRecicladoKg;
+    private double co2Evitado;
+    private int qtdEntregas;
+
+    private static final double FATOR_CO2 = 2.5;
+
+<span class="fc" id="L23">    public RelatorioImpacto(LocalDate periodoInicio, LocalDate periodoFim) {</span>
+<span class="fc" id="L24">        this.periodoInicio = periodoInicio;</span>
+<span class="fc" id="L25">        this.periodoFim = periodoFim;</span>
+<span class="fc" id="L26">        this.totalRecicladoKg = 0;</span>
+<span class="fc" id="L27">        this.co2Evitado = 0;</span>
+<span class="fc" id="L28">        this.qtdEntregas = 0;</span>
+<span class="fc" id="L29">    }</span>
+
+    public void calcularImpacto() {
+<span class="fc" id="L32">        this.co2Evitado = totalRecicladoKg * FATOR_CO2;</span>
+<span class="fc" id="L33">    }</span>
+
+    public String exportarPDF() {
+<span class="fc" id="L36">        return &quot;[PDF] Relatório EcoRecicla: &quot;</span>
+                + periodoInicio + &quot; a &quot; + periodoFim
+                + &quot; | Reciclado: &quot; + totalRecicladoKg + &quot;kg&quot;
+                + &quot; | CO2 evitado: &quot; + co2Evitado + &quot;kg&quot;
+                + &quot; | Entregas: &quot; + qtdEntregas;
+    }
+
+    public String exportarCSV() {
+<span class="fc" id="L44">        return &quot;periodoInicio,periodoFim,totalRecicladoKg,co2Evitado,qtdEntregas\n&quot;</span>
+                + periodoInicio + &quot;,&quot; + periodoFim + &quot;,&quot;
+                + totalRecicladoKg + &quot;,&quot; + co2Evitado + &quot;,&quot; + qtdEntregas;
+    }
+
+<span class="fc" id="L49">    public LocalDate getPeriodoInicio() { return periodoInicio; }</span>
+<span class="fc" id="L50">    public void setPeriodoInicio(LocalDate periodoInicio) { this.periodoInicio = periodoInicio; }</span>
+<span class="fc" id="L51">    public LocalDate getPeriodoFim() { return periodoFim; }</span>
+<span class="fc" id="L52">    public void setPeriodoFim(LocalDate periodoFim) { this.periodoFim = periodoFim; }</span>
+<span class="fc" id="L53">    public double getTotalRecicladoKg() { return totalRecicladoKg; }</span>
+<span class="fc" id="L54">    public void setTotalRecicladoKg(double totalRecicladoKg) { this.totalRecicladoKg = totalRecicladoKg; }</span>
+<span class="fc" id="L55">    public double getCo2Evitado() { return co2Evitado; }</span>
+<span class="fc" id="L56">    public int getQtdEntregas() { return qtdEntregas; }</span>
+<span class="fc" id="L57">    public void setQtdEntregas(int qtdEntregas) { this.qtdEntregas = qtdEntregas; }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -157,7 +157,7 @@ mvn clean test
 ### Gerar o relatório de cobertura (JaCoCo)
 
 ```bash
-mvn clean test
+mvn clean verify
 ```
 
 O relatório é gerado automaticamente em:
